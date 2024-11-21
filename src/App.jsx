@@ -7,7 +7,9 @@ import AddCourse from './pages/AddCourse'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import AddCourses from './AddCourses'
 import CreateNotes from './CreateNotes'
-import NotesNames from './Notes'
+import NotesNames from './NotesNames'
+import Notes from './Notes'
+
 
 
 function App() {
@@ -18,7 +20,7 @@ function App() {
     <Router>
     <Routes>
         <Route path="/" element={<MainBody />} >
-          <Route path="aihe1" index element={<><CreateNotes /><NotesNames/></>} />
+          <Route path="aihe1" index element={<><Notes /><NotesNames/></>} />
           <Route path="aihe2" index element={<NotesNames />} />
           <Route path="aihe3" index element={<><AddCourses/><Courses /></>} />
         </Route>
