@@ -3,10 +3,11 @@ import Header from './Header'
 import Footer from './Footer'
 import MainBody from './MainBody'
 import Courses from './Courses'
-import Notes from './Notes'
-import Home from './pages/AddCourse'
+import AddCourse from './pages/AddCourse'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import AddCourseNotes from './AddCourseNotes'
+import AddCourses from './AddCourses'
+import CreateNotes from './CreateNotes'
+import NotesNames from './Notes'
 
 
 function App() {
@@ -14,13 +15,12 @@ function App() {
   return (
     <>
     <Header />
-    {/* <Home /> */}
     <Router>
     <Routes>
         <Route path="/" element={<MainBody />} >
-          <Route path="aihe1" index element={<><Home /><AddCourseNotes/></>} />
-          <Route path="aihe2" index element={<Courses />} />
-          <Route path="aihe3" index element={<Notes />} />
+          <Route path="aihe1" index element={<><CreateNotes /><NotesNames/></>} />
+          <Route path="aihe2" index element={<NotesNames />} />
+          <Route path="aihe3" index element={<><AddCourses/><Courses /></>} />
         </Route>
       </Routes>
       </Router>

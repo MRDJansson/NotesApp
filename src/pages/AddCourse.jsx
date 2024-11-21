@@ -8,7 +8,7 @@ function Home() {
         console.log();
     }
 return(
-    <div> <Courses /></div>
+    <div><p>MORJENSTA!</p> </div>
 )
 }
 

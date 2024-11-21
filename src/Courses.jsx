@@ -1,16 +1,18 @@
 //Courses.jsx
 
-import Notes from "./Notes";
+import CourseNames from "./CourseNames";
 import { useStore } from "./store/Store";
+
 
 function Courses() {
   const lista = useStore((state) => state.lista);
+
 
   return (
     <div>
       <ul>
         {lista.map((kurssi, i) => (
-          <Notes key={i} name={kurssi} />
+          <CourseNames key={i} name={kurssi} />
         ))}
       </ul>
     </div>
