@@ -10,7 +10,7 @@ function Courses() {
 
   return (
     <div>
-      <ul>
+      <ul> lollero
         {lista.map((kurssi, i) => (
           <CourseNames key={i} name={kurssi} />
         ))}

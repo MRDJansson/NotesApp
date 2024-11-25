@@ -9,6 +9,7 @@ import AddCourses from './AddCourses'
 import CreateNotes from './CreateNotes'
 import NotesNames from './NotesNames'
 import Notes from './Notes'
+import NotesList from './NotesList'
 
 
 
@@ -17,14 +18,14 @@ function App() {
   return (
     <>
     <Header />
-    <Router>
-    <Routes>
-        <Route path="/" element={<MainBody />} >
-          <Route path="aihe1" index element={<><Notes /><NotesNames/></>} />
-          <Route path="aihe2" index element={<NotesNames />} />
-          <Route path="aihe3" index element={<><AddCourses/><Courses /></>} />
-        </Route>
-      </Routes>
+      <Router>
+        <Routes>
+          <Route path="/" element={<MainBody />} >
+            <Route path="aihe1" index element={<><Notes /><NotesNames/></>} />
+            <Route path="aihe2" index element={<NotesList />} />
+            <Route path="aihe3" index element={<><AddCourses/><Courses /></>} />
+          </Route>
+        </Routes>
       </Router>
     <Footer />
     </>

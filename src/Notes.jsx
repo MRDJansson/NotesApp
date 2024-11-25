@@ -1,15 +1,25 @@
 import { useState } from "react";
 import { useStore } from "./store/Store";
 import { Link } from "react-router-dom";
+import NotesList from "./NotesList";
+
 function Notes() {
     const lista = useStore((state) => state.lista);
     const lista2 = useStore((state) => state.lista2);
     const addNote = useStore((state) => state.addNote);
     const [selectedCourse, setSelectedCourse] = useState("");
     const [noteContent, setNoteContent] = useState("");
+    const [isLocked, setIsLocked] = useState(false);
+
     const filteredNotes = lista2.filter(
         (note) => note.courseName === selectedCourse
     );
+
+    const handleSelectionChange = (e) => {
+        setSelectedCourse(e.target.value);
+        setIsLocked(true);
+      };
+
     const handleAddNote = () => {
         if (selectedCourse && noteContent) {
             addNote(selectedCourse, noteContent);
@@ -21,7 +31,8 @@ function Notes() {
             <div>
                 <select
                     value={selectedCourse}
-                    onChange={(e) => setSelectedCourse(e.target.value)}
+                    onChange={handleSelectionChange}
+                    disabled={isLocked}
                 >
                     <option value="">Select a course</option>
                     {lista.map((kurssi, i) => (
