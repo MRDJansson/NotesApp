@@ -3,11 +3,16 @@
 import { Link } from "react-router-dom";
 import CourseNames from "./CourseNames";
 import { useStore } from "./store/Store";
+import { useEffect } from "react";
 
 
 function Courses() {
   const lista = useStore((state) => state.lista);
+  const fetchCourseData = useStore((state) => state.fetchCourseData)
 
+  useEffect(() => {
+    fetchCourseData();
+  }, [fetchCourseData])
 
   return (
     <div>

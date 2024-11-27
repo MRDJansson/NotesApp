@@ -1,6 +1,6 @@
 //Courses.jsx
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CourseNames from "./CourseNames";
 import { useStore } from "./store/Store";
 import { Link } from "react-router-dom";
@@ -13,6 +13,11 @@ function NotesList() {
   const [selectedCourse, setSelectedCourse] = useState("");
   const [isLocked, setIsLocked] = useState(false);
   const delNote = useStore((state) => state.delNote)
+  const fetchNotesData = useStore((state) => state.fetchNotesData)
+
+  // useEffect(() => {
+  //   fetchNotesData();
+  // }, [fetchNotesData])
 
   const cc = (id) => {
     delNote(id)
@@ -50,8 +55,8 @@ function NotesList() {
         <ul>
           {filteredNotes.map((note) => (
             <li key={note.id} onClick={() => cc(note.id)}>
-            <small>asasa
-              {new Date(note.date).toLocaleDateString("fi-FI")} 
+            <small>
+              {new Date(note.date).toLocaleDateString("fi-FI")}
               {note.courseName} 
               (ID: {lista.find(course => course.name === note.courseName)?.id})
             </small>
