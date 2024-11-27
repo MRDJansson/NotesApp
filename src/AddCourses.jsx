@@ -6,8 +6,9 @@ function AddCourseNotes() {
     const addCourse = useStore((state) => state.addCourse);
 
     const handleClick = () => {
+        if (name.length > 0){
         addCourse(name);
-        setName("");
+        setName("");}
     };
 
     return (
