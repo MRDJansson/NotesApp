@@ -21,7 +21,7 @@ function Notes() {
       };
 
     const handleAddNote = () => {
-        if (selectedCourse && noteContent) {
+        if (selectedCourse && noteContent.length > 0) {
             addNote(selectedCourse, noteContent);
             setNoteContent("");
         }
@@ -35,9 +35,9 @@ function Notes() {
                     disabled={isLocked}
                 >
                     <option value="">Select a course</option>
-                    {lista.map((kurssi, i) => (
-                        <option key={i} value={kurssi}>
-                            {kurssi}
+                    {lista.map((kurssi) => (
+                        <option key={kurssi.id} value={kurssi.name}>
+                            {kurssi.name}
                         </option>
                     ))}
                 </select>

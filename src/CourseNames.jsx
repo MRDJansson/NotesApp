@@ -1,10 +1,10 @@
 //Notes.jsx
 
-function CourseNames({name}){
+function CourseNames({name, id}){
     return( 
     <div>
         <li>
-        <span>{name}</span>
+        <p>Opintojakso "{name}" lisätty id:llä: {id}</p>
     </li>
     </div>
     )
