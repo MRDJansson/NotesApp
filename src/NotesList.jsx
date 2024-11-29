@@ -14,18 +14,23 @@ function NotesList() {
   const [isLocked, setIsLocked] = useState(false);
   const delNote = useStore((state) => state.delNote)
   const fetchNotesData = useStore((state) => state.fetchNotesData)
+  const fetchCourseData = useStore((state) => state.fetchCourseData);
 
-  // useEffect(() => {
-  //   fetchNotesData();
-  // }, [fetchNotesData])
+  useEffect(() => {
+    if (lista.length === 0) {
+      fetchCourseData();
+    }
+    if (lista2.length === 0) {
+      fetchNotesData();
+    }
+  }, [fetchCourseData, fetchNotesData, lista, lista2]);
 
   const cc = (id) => {
     delNote(id)
   }
 
-  const filteredNotes = selectedCourse === "" 
-    ? lista2
-    : lista2.filter((note) => note.courseName === selectedCourse);
+    const filteredNotes = lista2.filter(
+      (note) => note.course.name === selectedCourse);
 
   const handleSelectionChange = (e) => {
     setSelectedCourse(e.target.value);
@@ -56,11 +61,11 @@ function NotesList() {
           {filteredNotes.map((note) => (
             <li key={note.id} onClick={() => cc(note.id)}>
             <small>
-              {new Date(note.date).toLocaleDateString("fi-FI")}
-              {note.courseName} 
-              (ID: {lista.find(course => course.name === note.courseName)?.id})
+              {new Date(note.timestamp).toLocaleDateString("fi-FI")}{" "}
+              {note.course.name} {" "}
+              (ID: {note.id})
             </small>
-              <p>{note.content}</p>
+              <p>{note.text}</p>
             </li>
           ))}
         </ul>

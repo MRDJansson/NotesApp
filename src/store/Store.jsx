@@ -43,9 +43,9 @@ export const useStore = create((set) => ({
     addNote: (courseName, noteContent) => set((state) => ({
         lista2: [...state.lista2, {
             id: noteId++,
-            courseName, 
-            content: noteContent,
-            date: new Date().toISOString()
+            course: {name: courseName}, 
+            text: noteContent,
+            timestamp: new Date().toISOString()
          }],
     })),
 

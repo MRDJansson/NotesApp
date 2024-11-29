@@ -12,7 +12,7 @@ function Notes() {
     const [isLocked, setIsLocked] = useState(false);
 
     const filteredNotes = lista2.filter(
-        (note) => note.courseName === selectedCourse
+        (note) => note.course.name === selectedCourse
     );
 
     const handleSelectionChange = (e) => {
@@ -44,7 +44,7 @@ function Notes() {
             </div>
             <ul>
                 {filteredNotes.map((note, i) => (
-                    <li key={i}>{note.content}</li>
+                    <li key={i}>{note.text}</li>
                 ))}
             </ul>
             <div>

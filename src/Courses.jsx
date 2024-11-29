@@ -11,8 +11,11 @@ function Courses() {
   const fetchCourseData = useStore((state) => state.fetchCourseData)
 
   useEffect(() => {
-    fetchCourseData();
-  }, [fetchCourseData])
+    if (lista.length === 0) {
+      fetchCourseData();
+    }
+
+  }, [fetchCourseData, lista]);
 
   return (
     <div>
