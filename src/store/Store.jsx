@@ -6,6 +6,8 @@ let courseId = 0;
 export const useStore = create((set) => ({
     lista: [],
     lista2: [],
+    hasFetchedNotes: false,
+    hasFetchedCourses: false,
 
     fetchCourseData: async () => {
         const url = "https://luentomuistiinpano-api.netlify.app/.netlify/functions/courses"
@@ -15,7 +17,7 @@ export const useStore = create((set) => ({
 
             courseId = data.length
 
-            set({lista: data})
+            set({ lista: data, hasFetchedCourses: true })
         } catch (error) {
             console.log("Failed to fetch", error);
         }
@@ -29,7 +31,7 @@ export const useStore = create((set) => ({
 
             noteId = data.length
 
-            set({lista2: data})
+            set({ lista2: data, hasFetchedNotes: true })
         } catch (error) {
             console.log("Failed to fetch", error);
         }

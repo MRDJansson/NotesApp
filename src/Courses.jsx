@@ -9,13 +9,13 @@ import { useEffect } from "react";
 function Courses() {
   const lista = useStore((state) => state.lista);
   const fetchCourseData = useStore((state) => state.fetchCourseData)
+  const hasFetchedCourses = useStore((state) => state.hasFetchedCourses);
 
   useEffect(() => {
-    if (lista.length === 0) {
+    if (!hasFetchedCourses) {
       fetchCourseData();
     }
-
-  }, [fetchCourseData, lista]);
+  }, [hasFetchedCourses, fetchCourseData]);
 
   return (
     <div>
