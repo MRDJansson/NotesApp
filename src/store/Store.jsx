@@ -47,7 +47,7 @@ export const useStore = create((set) => ({
             id: noteId++,
             course: {name: courseName}, 
             text: noteContent,
-            timestamp: new Date().toISOString()
+            timestamp: new Date()
          }],
     })),
 

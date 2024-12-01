@@ -8,17 +8,22 @@ function Notes() {
     const lista2 = useStore((state) => state.lista2);
     const addNote = useStore((state) => state.addNote);
     const fetchNotesData = useStore((state) => state.fetchNotesData);
+    const hasFetchedNotes = useStore((state) => state.hasFetchedNotes);
     const [selectedCourse, setSelectedCourse] = useState("");
     const [noteContent, setNoteContent] = useState("");
     const [isLocked, setIsLocked] = useState(false);
+
+
+    useEffect(() => {
+        if (!hasFetchedNotes) {
+          fetchNotesData();
+        }
+      }, [hasFetchedNotes, fetchNotesData]);
 
     const filteredNotes = lista2.filter(
         (note) => note.course.name === selectedCourse
     );
 
-    useEffect(() => {
-        fetchNotesData();
-    }, [fetchNotesData]);
 
     const handleSelectionChange = (e) => {
         setSelectedCourse(e.target.value);
@@ -63,7 +68,7 @@ function Notes() {
             </ul>
             </div>
             <div>
-            <button onClick={handleAddNote}>Add Note</button>
+            <button type="submit" onClick={handleAddNote}>Add Note</button>
                 <button>
                     <Link to="/">Back</Link>
                 </button>

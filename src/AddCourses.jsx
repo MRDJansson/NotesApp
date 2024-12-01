@@ -18,7 +18,7 @@ function AddCourseNotes() {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
             />
-            <button onClick={handleClick}>save</button>
+            <button type="submit" onClick={handleClick}>save</button>
         </div>
     );
 }
