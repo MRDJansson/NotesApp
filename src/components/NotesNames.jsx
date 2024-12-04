@@ -1,4 +1,4 @@
-//Notes.jsx
+//NotesNames.jsx
 
 function NotesNames({name}){
     return( 

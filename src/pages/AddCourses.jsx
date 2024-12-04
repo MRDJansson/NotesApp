@@ -1,5 +1,7 @@
+// AddCourses.jsx
+
 import { useState } from "react";
-import { useStore } from "./store/Store";
+import { useStore } from "../store/Store";
 
 function AddCourseNotes() {
     const [name, setName] = useState("");

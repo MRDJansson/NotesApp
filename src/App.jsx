@@ -1,15 +1,13 @@
-import { useState } from 'react'
-import Header from './Header'
-import Footer from './Footer'
-import MainBody from './MainBody'
-import Courses from './Courses'
-import AddCourse from './pages/AddCourse'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import AddCourses from './AddCourses'
-import CreateNotes from './CreateNotes'
-import NotesNames from './NotesNames'
-import Notes from './Notes'
-import NotesList from './NotesList'
+// App.jsx
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom'
+import Footer from './components/Footer'
+import Header from './components/Header'
+import NotesNames from './components/NotesNames'
+import AddCourses from './pages/AddCourses'
+import Courses from './pages/Courses'
+import MainBody from './pages/MainBody'
+import Notes from './pages/Notes'
+import NotesList from './pages/NotesList'
 
 
 

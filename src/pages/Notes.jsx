@@ -1,7 +1,11 @@
-import { useEffect, useState } from "react";
-import { useStore } from "./store/Store";
+// Notes.jsx
+
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import NotesList from "./NotesList";
+import CourseSelect from "../components/CourseSelector";
+import { useStore } from "../store/Store";
+import { filterNotes } from "../utils/filterNotes";
+import { useFetchData } from "../utils/useFetchData";
 
 function Notes() {
     const lista = useStore((state) => state.lista);
@@ -14,20 +18,8 @@ function Notes() {
     const [isLocked, setIsLocked] = useState(false);
 
 
-    useEffect(() => {
-        if (!hasFetchedNotes) {
-          fetchNotesData();
-        }
-      }, [hasFetchedNotes, fetchNotesData]);
-
-    const filteredNotes = lista2.filter(
-        (note) => note.course.name === selectedCourse
-    );
-
-
-    const handleSelectionChange = (e) => {
-        setSelectedCourse(e.target.value);
-      };
+    useFetchData(fetchNotesData, hasFetchedNotes)
+    const filteredNotes = filterNotes(lista2, selectedCourse)
 
     const handleAddNote = () => {
         if (selectedCourse && noteContent.length > 0) {
@@ -38,20 +30,14 @@ function Notes() {
     };
     return (
         <div>
-            <div>
-                <select
-                    value={selectedCourse}
-                    onChange={handleSelectionChange}
-                    disabled={isLocked}
-                >
-                    <option value="">Select a course</option>
-                    {lista.map((kurssi) => (
-                        <option key={kurssi.id} value={kurssi.name}>
-                            {kurssi.name}
-                        </option>
-                    ))}
-                </select>
-            </div>
+      <div>
+        <CourseSelect
+          courses={lista}
+          selectedCourse={selectedCourse}
+          onCourseChange={setSelectedCourse}
+          isDisabled={isLocked}
+        />
+      </div>
             <div>
                 <textarea
                     type="text"

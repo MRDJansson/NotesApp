@@ -1,3 +1,5 @@
+// Storje.jsx
+
 import { create } from "zustand";
 
 let noteId = 0;

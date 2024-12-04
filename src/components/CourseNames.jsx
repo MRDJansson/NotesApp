@@ -1,4 +1,4 @@
-//Notes.jsx
+//CourseNames.jsx
 
 function CourseNames({name, id}){
     return( 
