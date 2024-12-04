@@ -27,13 +27,13 @@ function Notes() {
 
     const handleSelectionChange = (e) => {
         setSelectedCourse(e.target.value);
-        setIsLocked(true);
       };
 
     const handleAddNote = () => {
         if (selectedCourse && noteContent.length > 0) {
             addNote(selectedCourse, noteContent);
             setNoteContent("");
+            setIsLocked(true);
         }
     };
     return (
