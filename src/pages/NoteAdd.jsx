@@ -2,24 +2,28 @@
 
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import CourseSelect from "../components/CourseSelector";
+import CourseDropdown from "../components/CourseDropdown";
 import { useStore } from "../store/Store";
 import { filterNotes } from "../utils/filterNotes";
 import { useFetchData } from "../utils/useFetchData";
 
-function Notes() {
-    const lista = useStore((state) => state.lista);
-    const lista2 = useStore((state) => state.lista2);
-    const addNote = useStore((state) => state.addNote);
-    const fetchNotesData = useStore((state) => state.fetchNotesData);
-    const hasFetchedNotes = useStore((state) => state.hasFetchedNotes);
-    const [selectedCourse, setSelectedCourse] = useState("");
-    const [noteContent, setNoteContent] = useState("");
-    const [isLocked, setIsLocked] = useState(false);
+function NoteAdd() {
+    const { 
+        courses, 
+        notes, 
+        addNote, 
+        fetchNotesData, 
+        hasFetchedNotes,
+        hasFetchedCourses 
+      } = useStore();
+    
+      const [selectedCourse, setSelectedCourse] = useState("");
+      const [noteContent, setNoteContent] = useState("");
+      const [isLocked, setIsLocked] = useState(false);
 
 
-    useFetchData(fetchNotesData, hasFetchedNotes)
-    const filteredNotes = filterNotes(lista2, selectedCourse)
+      useFetchData(fetchNotesData, hasFetchedNotes, hasFetchedCourses);
+      const filteredNotes = filterNotes(notes, selectedCourse)
 
     const handleAddNote = () => {
         if (selectedCourse && noteContent.length > 0) {
@@ -31,8 +35,8 @@ function Notes() {
     return (
         <div>
       <div>
-        <CourseSelect
-          courses={lista}
+        <CourseDropdown
+          courses={courses}
           selectedCourse={selectedCourse}
           onCourseChange={setSelectedCourse}
           isDisabled={isLocked}
@@ -62,4 +66,4 @@ function Notes() {
         </div>
     );
 }
-export default Notes;
+export default NoteAdd;

@@ -1,8 +1,8 @@
-// CourseSelector.jsx
+// CourseDropdownor.jsx
 
 import React from "react";
 
-function CourseSelect({ courses, selectedCourse, onCourseChange, isDisabled }) {
+function CourseDropdown({ courses, selectedCourse, onCourseChange, isDisabled }) {
   return (
     <select
       value={selectedCourse}
@@ -19,4 +19,4 @@ function CourseSelect({ courses, selectedCourse, onCourseChange, isDisabled }) {
   );
 }
 
-export default CourseSelect;
+export default CourseDropdown;

@@ -2,10 +2,11 @@
 
 import { useEffect } from "react";
 
-export const useFetchData = (fetchData, hasFetched) => {
+export const useFetchData = (fetchData, hasFetched, shouldFetch) => {
   useEffect(() => {
-    if (!hasFetched) {
+    if (shouldFetch && !hasFetched) {
       fetchData();
     }
-  }, [fetchData, hasFetched]);
+  }, 
+  [fetchData, hasFetched, shouldFetch]);
 };

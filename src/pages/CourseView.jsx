@@ -1,23 +1,23 @@
 //Courses.jsx
 
 import { Link } from "react-router-dom";
-import CourseNames from "../components/CourseNames";
+import CourseItem from "../components/CourseItem";
 import { useStore } from "../store/Store";
 import { useFetchData } from "../utils/useFetchData";
 
 
-function Courses() {
-  const lista = useStore((state) => state.lista);
+function CoursesView() {
+  const courses = useStore((state) => state.courses);
   const fetchCourseData = useStore((state) => state.fetchCourseData)
   const hasFetchedCourses = useStore((state) => state.hasFetchedCourses);
 
-  useFetchData(fetchCourseData, hasFetchedCourses);
+  useFetchData(fetchCourseData, hasFetchedCourses, !hasFetchedCourses);
 
   return (
     <div>
       <ul>
-        {lista.map((kurssi) => (
-          <CourseNames key={kurssi.id} name={kurssi.name} id={kurssi.id} />
+        {courses.map((course) => (
+          <CourseItem key={course.id} name={course.name} id={course.id} />
         ))}
       </ul>
       <div>
@@ -30,4 +30,4 @@ function Courses() {
   );
 }
 
-export default Courses;
+export default CoursesView;

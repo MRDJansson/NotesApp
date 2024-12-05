@@ -1,6 +1,6 @@
-//NotesNames.jsx
+//NoteItem.jsx
 
-function NotesNames({name}){
+function NoteItem({name}){
     return( 
     <div>
         <li>
@@ -10,4 +10,4 @@ function NotesNames({name}){
     )
 }
 
-export default NotesNames;
+export default NoteItem;

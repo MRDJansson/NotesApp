@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useStore } from "../store/Store";
 
-function AddCourseNotes() {
+function CourseAdd() {
     const [name, setName] = useState("");
     const addCourse = useStore((state) => state.addCourse);
 
@@ -25,4 +25,4 @@ function AddCourseNotes() {
     );
 }
 
-export default AddCourseNotes;
+export default CourseAdd;

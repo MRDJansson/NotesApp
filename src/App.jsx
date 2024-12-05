@@ -2,12 +2,12 @@
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom'
 import Footer from './components/Footer'
 import Header from './components/Header'
-import NotesNames from './components/NotesNames'
-import AddCourses from './pages/AddCourses'
-import Courses from './pages/Courses'
+import NoteItem from './components/NoteItem'
+import AddCourses from './pages/CourseAdd'
+import CoursesView from './pages/CourseView'
 import MainBody from './pages/MainBody'
-import Notes from './pages/Notes'
-import NotesList from './pages/NotesList'
+import NoteAdd from './pages/NoteAdd'
+import NotesView from './pages/NoteView'
 
 
 
@@ -19,9 +19,9 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<MainBody />} >
-            <Route path="aihe1" index element={<><Notes /><NotesNames/></>} />
-            <Route path="aihe2" index element={<NotesList />} />
-            <Route path="aihe3" index element={<><AddCourses/><Courses /></>} />
+            <Route path="aihe1" index element={<><NoteAdd /><NoteItem/></>} />
+            <Route path="aihe2" index element={<NotesView />} />
+            <Route path="aihe3" index element={<><AddCourses/><CoursesView /></>} />
           </Route>
         </Routes>
       </Router>

@@ -2,7 +2,7 @@
 
 function Header(){
     return(
-        <header><div><h1>NotesApp</h1></div></header>
+        <header><div><h1>CreateNoteApp</h1></div></header>
     )
 }
 

@@ -1,13 +1,13 @@
 //MainBody.jsx
 
 import { Outlet } from "react-router-dom";
-import Buttons from "../components/Buttons";
+import NavButtons from "../components/NavButtons";
 
 
 function MainBody() {
   return (
     <div>
-      <Buttons />
+      <NavButtons />
       <Outlet />
     </div>
   );

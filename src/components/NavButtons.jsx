@@ -1,20 +1,22 @@
+// NavButtons.jsx
+
 import { Link, useLocation } from "react-router-dom";
 import { useStore } from "../store/Store";
 
-function Buttons() {
-  const lista = useStore((state) => state.lista);
-  const isCoursesEmpty = lista.length === 0;
-  
-  const location = useLocation();
-  const showButtons = location.pathname === "/";
+function NavButtons() {
+  const courses = useStore((state) => state.courses);
+  const isCoursesEmpty = courses.length === 0;
 
-  if (!showButtons) return null;
+  const location = useLocation();
+  const showNavButtons = location.pathname === "/";
+
+  if (!showNavButtons) return null;
 
   return (
     <div>
       <button disabled={isCoursesEmpty}>
         {isCoursesEmpty ? (
-          "Add courses first"
+          "Create notes for class"
         ) : (
           <Link to="/aihe1">Create notes for class</Link>
         )}
@@ -25,8 +27,9 @@ function Buttons() {
       <button>
         <Link to="/aihe3">Add courses</Link>
       </button>
+      <div>{isCoursesEmpty && "Add courses first"}</div>
     </div>
   );
 }
 
-export default Buttons;
+export default NavButtons;

@@ -1,6 +1,6 @@
-//CourseNames.jsx
+//CourseItem.jsx
 
-function CourseNames({name, id}){
+function CourseItem({name, id}){
     return( 
     <div>
         <li>
@@ -10,4 +10,4 @@ function CourseNames({name, id}){
     )
 }
 
-export default CourseNames;
+export default CourseItem;

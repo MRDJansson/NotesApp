@@ -1,6 +1,6 @@
-// NotesDisplay.jsx
+// NoteList.jsx
 
-function NotesDisplay({ notes, onDelete }) {
+function NoteList({ notes, onDelete }) {
     if (notes.length === 0) {
       return <p>No notes!</p>;
     }
@@ -10,9 +10,9 @@ function NotesDisplay({ notes, onDelete }) {
         {notes.map((note) => (
           <li key={note.id} onClick={() => onDelete(note.id)}>
             <small>
-              {new Date(note.timestamp).toLocaleString("fi-FI")} 
-              {note.course.name} 
-              (ID: {note.id})
+              {new Date(note.timestamp).toLocaleString("fi-FI")}{" "} 
+              {note.course.name} {" "}
+              (ID: {note.course.id})
             </small>
             <p>{note.text}</p>
           </li>
@@ -21,5 +21,5 @@ function NotesDisplay({ notes, onDelete }) {
     );
   }
   
-  export default NotesDisplay;
+  export default NoteList;
   
