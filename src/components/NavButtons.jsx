@@ -14,19 +14,23 @@ function NavButtons() {
 
   return (
     <div>
-      <button disabled={isCoursesEmpty}>
-        {isCoursesEmpty ? (
-          "Create notes for class"
-        ) : (
-          <Link to="/aihe1">Create notes for class</Link>
-        )}
-      </button>
-      <button>
-        <Link to="/aihe2">List notes</Link>
-      </button>
-      <button>
-        <Link to="/aihe3">Add courses</Link>
-      </button>
+      <div className="flex gap-1 my-4 justify-center items-center">
+        <button
+          className={`p-2 px-4 rounded-lg ${
+            isCoursesEmpty ? "bg-gray-300" : "bg-orange-500 text-white hover:bg-orange-600"
+          }`}
+          disabled={isCoursesEmpty}
+        >
+          {isCoursesEmpty ? "Create notes" : <Link to="/aihe1">Create notes</Link>}
+        </button>
+        <button className="p-2 px-4 bg-orange-500 text-white rounded-lg hover:bg-orange-600">
+          <Link to="/aihe2">List notes</Link>
+        </button>
+        <button className="p-2 px-4 bg-orange-500 text-white rounded-lg hover:bg-orange-600">
+          <Link to="/aihe3">Add courses</Link>
+        </button>
+      </div>
+
       <div>{isCoursesEmpty && "Add courses first"}</div>
     </div>
   );

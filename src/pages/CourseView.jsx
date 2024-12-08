@@ -14,19 +14,26 @@ function CoursesView() {
   useFetchData(fetchCourseData, hasFetchedCourses, !hasFetchedCourses);
 
   return (
-    <div>
-      <ul>
-        {courses.map((course) => (
-          <CourseItem key={course.id} name={course.name} id={course.id} />
-        ))}
+    <div className="p-6 bg-white shadow-md rounded-b-md max-w-2xl mx-auto shadow-md border-r-4 border-b-4 border-orange-500">
+      <h1 className="text-2xl font-semibold text-gray-800 mb-6 ">Available Courses</h1>
+
+      <ul className="space-y-4">
+        {courses.length > 0 ? (
+          courses.map((course) => (
+            <CourseItem key={course.id} name={course.name} id={course.id} />
+          ))
+        ) : (
+          <p className="text-gray-500">No courses available. Please add some courses first.</p>
+        )}
       </ul>
-      <div>
-        <button>
-          <Link to="/">Back</Link>
-        </button>
+
+      <div className="mt-6 text-right">
+        <Link to="/"
+          className="px-4 py-2 bg-orange-500 text-white rounded-md hover:bg-orange-600"
+        >Back
+        </Link>
       </div>
     </div>
-
   );
 }
 

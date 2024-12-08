@@ -27,8 +27,8 @@ function NotesView() {
   useFetchData(fetchNotesData, hasFetchedNotes, hasFetchedCourses);
 
   return (
-    <div>
-      <div>
+    <div className="p-6 bg-white shadow-md rounded-md max-w-2xl mx-auto shadow-md border-r-4 border-b-4 border-orange-500">
+      <div className="mb-4">
         <CourseDropdown
           courses={courses}
           selectedCourse={selectedCourse}
@@ -36,10 +36,13 @@ function NotesView() {
         />
       </div>
       <NoteList notes={filteredNotes} onDelete={delNote} />
-      <button>
-        <Link to="/">Back</Link>
-      </button>
+      <div className="mt-6 text-right">
+        <button className="mt-4 p-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600">
+          <Link to="/">Back</Link>
+        </button>
+      </div>
     </div>
+
   );
 }
 
