@@ -1,4 +1,5 @@
 // App.jsx
+
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
@@ -18,7 +19,7 @@ function App() {
           <Routes>
             <Route path="/" element={<MainBody />}>
               <Route
-                path="aihe1"
+                path="add-notes"
                 index
                 element={
                   <div className="space-y-4">
@@ -26,9 +27,9 @@ function App() {
                   </div>
                 }
               />
-              <Route path="aihe2" index element={<NotesView />} />
+              <Route path="list-notes" index element={<NotesView />} />
               <Route
-                path="aihe3"
+                path="add-course"
                 index
                 element={
                   <div>

@@ -21,13 +21,13 @@ function NavButtons() {
           }`}
           disabled={isCoursesEmpty}
         >
-          {isCoursesEmpty ? "Create notes" : <Link to="/aihe1">Create notes</Link>}
+          {isCoursesEmpty ? "Create notes" : <Link to="/add-notes">Create notes</Link>}
         </button>
         <button className="p-2 px-4 bg-orange-500 text-white rounded-lg hover:bg-orange-600">
-          <Link to="/aihe2">List notes</Link>
+          <Link to="/list-notes">List notes</Link>
         </button>
         <button className="p-2 px-4 bg-orange-500 text-white rounded-lg hover:bg-orange-600">
-          <Link to="/aihe3">Add courses</Link>
+          <Link to="/add-course">Add courses</Link>
         </button>
       </div>
 
