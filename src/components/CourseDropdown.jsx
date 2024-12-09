@@ -26,7 +26,7 @@ function CourseDropdown({ courses, selectedCourse, onCourseChange, isDisabled })
       </select>
       {isDisabled && (
         <p className="mt-1 text-sm text-gray-500 italic">
-          Dropdown disabled. Add courses first.
+          Dropdown disabled.
         </p>
       )}
     </div>
