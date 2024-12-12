@@ -1,16 +1,16 @@
-// NavButtons.jsx
+// MainButtons.jsx
 
 import { Link, useLocation } from "react-router-dom";
 import { useStore } from "../store/Store";
 
-function NavButtons() {
+function MainButtons() {
   const courses = useStore((state) => state.courses);
   const isCoursesEmpty = courses.length === 0;
 
   const location = useLocation();
-  const showNavButtons = location.pathname === "/";
+  const showMainButtons = location.pathname === "/";
 
-  if (!showNavButtons) return null;
+  if (!showMainButtons) return null;
 
   return (
     <div>
@@ -33,7 +33,7 @@ function NavButtons() {
             <div className="absolute bottom-full mb-3 left-1/2 transform -translate-x-1/2 w-max opacity-0 group-hover:opacity-100 transition-opacity duration-300">
               <div className="bg-orange-600 text-white text-sm font-bold rounded-lg py-2 px-4 shadow-lg">
                 <div className="flex items-center space-x-2">
-                  <span>Add courses first!</span>
+                  <span>Add courses first</span>
                 </div>
                 <div className="absolute bottom-[-8px] left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-8 border-r-8 border-t-8 border-transparent border-t-orange-600"></div>
               </div>
@@ -48,5 +48,5 @@ function NavButtons() {
   );
 }
 
-export default NavButtons;
+export default MainButtons;
 

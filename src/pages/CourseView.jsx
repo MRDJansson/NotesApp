@@ -1,5 +1,4 @@
 //CourseView.jsx
-
 import { Link } from "react-router-dom";
 import CourseAdd from "../components/CourseAdd";
 import CourseItem from "../components/CourseItem";
@@ -14,10 +13,15 @@ function CoursesView() {
   useFetchData(fetchCourseData, hasFetchedCourses, !hasFetchedCourses);
 
   return (
-    <div className="p-6 max-w-4xl mx-auto bg-white shadow-md rounded-md border-r-4 border-b-4 border-orange-500">
-      <CourseAdd /> {/* CourseAdd component at the top */}
-      
-      <h1 className="text-2xl font-semibold text-gray-800 mt-6 mb-6">Available Courses</h1>
+    <div className="p-6 max-w-3xl mx-auto bg-white shadow-md rounded-md border-r-4 border-b-4 border-orange-500">
+      <h1 className="text-2xl font-semibold text-gray-800 mb-4">Manage Your Courses</h1>
+      <p className="text-gray-600 mb-6">
+        Add new courses to organize your notes effectively. You can manage, view, or delete courses here.
+      </p>
+
+      <CourseAdd />
+
+      <h2 className="text-xl font-semibold text-gray-800 mt-6 mb-4">Available Courses</h2>
 
       <ul className="space-y-4">
         {courses.length > 0 ? (

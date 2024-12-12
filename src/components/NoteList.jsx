@@ -1,6 +1,5 @@
 // NoteList.jsx
 
-
 function NoteList({ notes, onDelete }) {
   if (notes.length === 0) {
     return (
@@ -11,28 +10,27 @@ function NoteList({ notes, onDelete }) {
   }
 
   return (
-    <ul className="space-y-6">
+    <ul className="space-y-4">
       {notes.map((note) => (
         <li
           key={note.id}
-          className="p-6 rounded-lg bg-white shadow-lg border-l-4 border-orange-500 hover:shadow-xl transition-all duration-300 cursor-pointer group"
+          className={`p-4 rounded-lg bg-white shadow-lg border-l-4 border-orange-500 hover:shadow-xl transition-all duration-300 cursor-pointer group 
+                     hover:scale-105`}
           onClick={() => onDelete(note.id)}
         >
-          <div className="flex justify-between items-start mb-3">
+          <div className="flex justify-between items-start mb-2">
+            <div className="flex items-center"> 
+              <span className="text-orange-500 font-semibold mr-2">{note.course.name}</span> 
+              <small className="text-gray-500">({note.course.id})</small>
+            </div>
             <small className="text-gray-500 font-medium">
               {new Date(note.timestamp).toLocaleString("fi-FI")}
             </small>
-            <span className="px-3 py-1 bg-orange-500 text-white text-xs font-semibold rounded-lg">
-              {note.course.name}
-            </span>
           </div>
-          <p className="mt-2 text-gray-700 leading-relaxed">{note.text}</p>
+          <p className="mt-2 text-gray-700">{note.text}</p> 
           <div className="mt-4 text-right opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                onDelete(note.id);
-              }}
+            <button 
+              onClick={() => onDelete(note.id)}
               className="text-red-500 hover:text-red-600 transition-colors duration-300"
             >
               Delete

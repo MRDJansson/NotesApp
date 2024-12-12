@@ -10,24 +10,28 @@ import { useFetchData } from "../utils/useFetchData";
 
 
 
-
 function NotesView() {
   const { 
-  courses,
-  notes,
-  hasFetchedCourses,
-  hasFetchedNotes,
-  fetchNotesData,
-  delNote
+    courses,
+    notes,
+    hasFetchedCourses,
+    hasFetchedNotes,
+    fetchNotesData,
+    delNote
   } = useStore();
 
   const [selectedCourse, setSelectedCourse] = useState("");
-  const filteredNotes = filterNotes(notes, selectedCourse)
+  const filteredNotes = filterNotes(notes, selectedCourse);
 
   useFetchData(fetchNotesData, hasFetchedNotes, hasFetchedCourses);
 
   return (
-    <div className="p-6 bg-white shadow-md rounded-md max-w-2xl mx-auto shadow-md border-r-4 border-b-4 border-orange-500">
+    <div className="p-6 bg-white shadow-md rounded-md max-w-3xl mx-auto shadow-md border-r-4 border-b-4 border-orange-500">
+      <h1 className="text-2xl font-semibold text-gray-800 mb-4">Manage Your Notes</h1>
+      <p className="text-gray-600 mb-6">
+        View your saved notes. You can delete or filter them by course.
+      </p>
+
       <div className="mb-4">
         <CourseDropdown
           courses={courses}
@@ -35,14 +39,15 @@ function NotesView() {
           onCourseChange={setSelectedCourse}
         />
       </div>
+
       <NoteList notes={filteredNotes} onDelete={delNote} />
+
       <div className="mt-6 text-right">
         <button className="mt-4 p-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600">
           <Link to="/">Back</Link>
         </button>
       </div>
     </div>
-
   );
 }
 
