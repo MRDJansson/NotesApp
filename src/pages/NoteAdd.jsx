@@ -35,7 +35,7 @@ function NoteAdd() {
 
   return (
     <div className="p-6 bg-white shadow-md border-r-4 border-b-4 border-orange-500 rounded-md max-w-3xl mx-auto">
-      <h1 className="text-2xl font-semibold text-gray-800 mb-4">Create a New Note</h1>
+      <h1 className="text-2xl font-semibold text-gray-800 mb-4">Create Notes for Courses</h1>
       <p className="text-gray-600 mb-6">
         Select a course and write a note. Once you're done, remember to save!
       </p>

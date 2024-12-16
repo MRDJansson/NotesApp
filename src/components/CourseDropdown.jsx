@@ -24,11 +24,6 @@ function CourseDropdown({ courses, selectedCourse, onCourseChange, isDisabled })
           </option>
         ))}
       </select>
-      {isDisabled && (
-        <p className="mt-1 text-sm text-gray-500 italic">
-          Dropdown disabled.
-        </p>
-      )}
     </div>
   );
 }

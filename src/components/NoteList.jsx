@@ -23,10 +23,12 @@ function NoteList({ notes, onDelete }) {
               <span className="text-orange-500 font-semibold mr-2">{note.course.name}</span> 
               <small className="text-gray-500">({note.course.id})</small>
             </div>
+
             <small className="text-gray-500 font-medium">
               {new Date(note.timestamp).toLocaleString("fi-FI")}
             </small>
           </div>
+          
           <p className="mt-2 text-gray-700">{note.text}</p> 
           <div className="mt-4 text-right opacity-0 group-hover:opacity-100 transition-opacity duration-300">
             <button 

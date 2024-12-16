@@ -9,7 +9,6 @@ import { filterNotes } from "../utils/filterNotes";
 import { useFetchData } from "../utils/useFetchData";
 
 
-
 function NotesView() {
   const { 
     courses,
