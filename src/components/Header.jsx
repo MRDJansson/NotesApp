@@ -1,7 +1,7 @@
 // Header.jsx
-// Header.jsx
+
 import { Link } from 'react-router-dom';
-import NavLinks from './NavLinks';
+import NavButtons from './NavButtons';
 
 function Header() {
   return (
@@ -10,7 +10,7 @@ function Header() {
         <Link to="/" className="text-3xl font-bold tracking-tight">
           NotesApp
         </Link>
-        <NavLinks />
+        <NavButtons />
       </div>
     </header>
   );
