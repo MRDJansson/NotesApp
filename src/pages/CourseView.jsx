@@ -1,11 +1,11 @@
 //CourseView.jsx
-import { Link } from "react-router-dom";
+import BackButton from "../components/BackButton";
 import CourseAdd from "../components/CourseAdd";
 import CourseItem from "../components/CourseItem";
 import { useStore } from "../store/Store";
 import { useFetchData } from "../utils/useFetchData";
 
-function CoursesView() {
+function CourseView() {
   const courses = useStore((state) => state.courses);
   const fetchCourseData = useStore((state) => state.fetchCourseData);
   const hasFetchedCourses = useStore((state) => state.hasFetchedCourses);
@@ -34,15 +34,10 @@ function CoursesView() {
       </ul>
 
       <div className="mt-6 text-right">
-        <Link
-          to="/"
-          className="px-4 py-2 bg-orange-500 text-white rounded-md hover:bg-orange-600"
-        >
-          Back
-        </Link>
+      <BackButton />
       </div>
     </div>
   );
 }
 
-export default CoursesView;
+export default CourseView;

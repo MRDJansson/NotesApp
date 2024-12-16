@@ -1,6 +1,7 @@
 //MainBody.jsx
 
 import { Outlet } from "react-router-dom";
+import MainBodyInfo from "../components/MainBodyInfo";
 import MainButtons from "../components/MainButtons";
 
 function MainBody() {
@@ -16,19 +17,7 @@ function MainBody() {
           Follow these simple steps to get started:
         </p>
       </div>
-      <div className="bg-gray-50 border border-gray-200 p-6 rounded-lg shadow-sm max-w-xl">
-        <ol className="space-y-4 text-gray-700 list-decimal list-inside">
-          <li>
-            <strong className="text-orange-500">Add Courses</strong>: Begin by adding courses in the <em>"Add Courses"</em> section to organize your notes effectively.
-          </li>
-          <li>
-            <strong className="text-orange-500">Create Notes:</strong> Once courses are added, go to the <em>"Create Notes"</em> section to start writing and saving notes.
-          </li>
-          <li>
-            <strong className="text-orange-500">View and Manage Notes:</strong> Visit the <em>"View Notes"</em> section to browse or delete notes as needed.
-          </li>
-        </ol>
-      </div>
+      <MainBodyInfo />
       <p className="text-sm text-gray-500 italic">
         Get started by adding a course!
       </p>

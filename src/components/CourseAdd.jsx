@@ -2,11 +2,14 @@
 
 import { useState } from "react";
 import { useStore } from "../store/Store";
+import SaveButton from "./SaveButton";
 
 function CourseAdd() {
   const [name, setName] = useState("");
   const addCourse = useStore((state) => state.addCourse);
 
+  const isButtonDisabled = name.length === 0;
+  
   const handleClick = () => {
     if (name.length > 0) {
       addCourse(name);
@@ -23,12 +26,11 @@ function CourseAdd() {
         onChange={(e) => setName(e.target.value)}
         placeholder="Enter course name"
       />
-      <button
+      <SaveButton
+        isDisabled={isButtonDisabled}
         onClick={handleClick}
-        className="w-full bg-orange-500 text-white p-2 rounded-lg hover:bg-orange-600"
-      >
-        Save
-      </button>
+        additionalStyling="w-full bg-orange-500 text-white p-2 rounded-lg hover:bg-orange-600"
+      />
     </div>
   );
 }

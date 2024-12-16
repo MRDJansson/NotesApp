@@ -15,9 +15,7 @@ function CourseDropdown({ courses, selectedCourse, onCourseChange, isDisabled })
         onChange={(e) => onCourseChange(e.target.value)}
         disabled={isDisabled}
       >
-        <option value="" disabled>
-          Select a course
-        </option>
+        <option value="" disabled>Select a course</option>
         {courses.map((course) => (
           <option key={course.id} value={course.name}>
             {course.name}

@@ -1,15 +1,16 @@
 //CourseItem.jsx
 
-function CourseItem({name, id}){
-    return( 
-        <li className="p-4 bg-gray-50 border border-gray-300 rounded-md">
-        <p className="text-gray-700">
-          Opintojakso{" "}
-          <span className="text-orange-500 font-semibold">{name}</span> lisätty id:llä:{" "}
-          <span className="font-semibold">{id}</span>
-        </p>
-      </li>
-    );
-  }
+function CourseItem({ name, id }) {
+  return (
+    <li className="p-5 bg-gray-50 border border-gray-300 rounded-lg shadow-sm text-transform: capitalize">
+      <div className="flex items-center justify-between">
+        <h3 className="text-lg font-semibold text-orange-500">
+          {name}
+        </h3>
+        <span className="text-sm text-gray-800">ID: {id}</span>
+      </div>
+    </li>
+  );
+}
 
 export default CourseItem;

@@ -1,8 +1,11 @@
 // Notes.jsx
 
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import BackButton from "../components/BackButton";
 import CourseDropdown from "../components/CourseDropdown";
+import NoteItem from "../components/NoteItem";
+import NoteTextarea from "../components/NoteTextArea";
+import SaveButton from "../components/SaveButton";
 import { useStore } from "../store/Store";
 import { filterNotes } from "../utils/filterNotes";
 import { useFetchData } from "../utils/useFetchData";
@@ -20,10 +23,10 @@ function NoteAdd() {
   const [selectedCourse, setSelectedCourse] = useState("");
   const [noteContent, setNoteContent] = useState("");
   const [isLocked, setIsLocked] = useState(false);
-  const [characterLimit] = useState(200);
+  const [characterLimit] = useState(500);
 
-  useFetchData(fetchNotesData, hasFetchedNotes, hasFetchedCourses);
   const filteredNotes = filterNotes(notes, selectedCourse);
+  const isButtonDisabled = !selectedCourse || noteContent.length === 0;
 
   const handleAddNote = () => {
     if (selectedCourse && noteContent.length > 0) {
@@ -32,6 +35,9 @@ function NoteAdd() {
       setIsLocked(true);
     }
   };
+
+  useFetchData(fetchNotesData, hasFetchedNotes, hasFetchedCourses);
+
 
   return (
     <div className="p-6 bg-white shadow-md border-r-4 border-b-4 border-orange-500 rounded-md max-w-3xl mx-auto">
@@ -49,51 +55,20 @@ function NoteAdd() {
         />
       </div>
 
-      <div className="mb-4">
-        <textarea
-          className="w-full p-4 bg-white rounded-md shadow-md border-r-2 border-orange-500 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
-          value={noteContent}
-          onChange={(e) => setNoteContent(e.target.value)}
-          placeholder="Write a note..."
-          rows="4"
-          maxLength={characterLimit} 
-        />
-        <p className="text-xs text-gray-500 mt-1">
-          {noteContent.length}/{characterLimit} characters
-        </p>
-      </div>
+      <NoteTextarea
+        noteContent={noteContent}
+        setNoteContent={setNoteContent}
+        characterLimit={characterLimit}
+      />
 
-      <div className="mb-4">
-        {filteredNotes.length > 0 ? (
-          <ul className="space-y-2">
-            {filteredNotes.map((note, i) => (
-              <li
-                key={i}
-                className="p-4 bg-white rounded-md shadow-md border-r-4 border-orange-500"
-              >
-                {note.text}
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <p className="text-gray-500">No notes to display.</p>
-        )}
-      </div>
+      <NoteItem filteredNotes={filteredNotes} />
 
       <div className="flex items-center justify-between">
-        <button
-          className={`px-4 py-2 rounded-md text-white ${selectedCourse && noteContent.length > 0
-              ? "bg-orange-500 hover:bg-orange-600"
-              : "bg-gray-300 cursor-not-allowed"
-            }`}
-          onClick={handleAddNote}
-          disabled={!selectedCourse || noteContent.length === 0}
-        >
-          Save
-        </button>
-        <button className="px-4 py-2 bg-orange-500 text-white rounded-md hover:bg-orange-600">
-          <Link to="/">Back</Link>
-        </button>
+      <SaveButton
+        isDisabled={isButtonDisabled}
+        onClick={handleAddNote}
+      />
+        <BackButton/>
       </div>
     </div>
   );

@@ -1,7 +1,7 @@
 //NotesList.jsx
 
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import BackButton from "../components/BackButton";
 import CourseDropdown from "../components/CourseDropdown";
 import NoteList from "../components/NoteList";
 import { useStore } from "../store/Store";
@@ -42,9 +42,7 @@ function NotesView() {
       <NoteList notes={filteredNotes} onDelete={delNote} />
 
       <div className="mt-6 text-right">
-        <button className="mt-4 p-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600">
-          <Link to="/">Back</Link>
-        </button>
+        <BackButton />
       </div>
     </div>
   );
