@@ -1,14 +1,15 @@
 // Notes.jsx
 
 import { useState } from "react";
-import BackButton from "../components/BackButton";
+import BackButton from "../components/buttons/BackButton";
+import SaveButton from "../components/buttons/SaveButton";
 import CourseDropdown from "../components/CourseDropdown";
 import NoteItem from "../components/NoteItem";
 import NoteTextarea from "../components/NoteTextArea";
-import SaveButton from "../components/SaveButton";
 import { useStore } from "../store/Store";
 import { filterNotes } from "../utils/filterNotes";
 import { useFetchData } from "../utils/useFetchData";
+
 
 function NoteAdd() {
   const {
@@ -60,15 +61,15 @@ function NoteAdd() {
         setNoteContent={setNoteContent}
         characterLimit={characterLimit}
       />
-
-      <NoteItem filteredNotes={filteredNotes} />
-
-      <div className="flex items-center justify-between">
       <SaveButton
         isDisabled={isButtonDisabled}
         onClick={handleAddNote}
       />
-        <BackButton/>
+
+      <NoteItem filteredNotes={filteredNotes} />
+
+      <div className="flex justify-end mt-4">
+        <BackButton />
       </div>
     </div>
   );

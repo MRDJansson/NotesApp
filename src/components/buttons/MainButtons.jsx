@@ -1,8 +1,8 @@
 // MainButtons.jsx
 
 import { Link } from "react-router-dom";
-import { useStore } from "../store/Store";
-import Tooltips from "./Tooltips";
+import { useStore } from "../../store/Store";
+import Tooltips from "../Tooltips";
 
 function MainButtons() {
   const courses = useStore((state) => state.courses);

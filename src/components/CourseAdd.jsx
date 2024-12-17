@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useStore } from "../store/Store";
-import SaveButton from "./SaveButton";
+import SaveButton from "./buttons/SaveButton";
 
 function CourseAdd() {
   const [name, setName] = useState("");
@@ -29,7 +29,6 @@ function CourseAdd() {
       <SaveButton
         isDisabled={isButtonDisabled}
         onClick={handleClick}
-        additionalStyling="w-full bg-orange-500 text-white p-2 rounded-lg hover:bg-orange-600"
       />
     </div>
   );

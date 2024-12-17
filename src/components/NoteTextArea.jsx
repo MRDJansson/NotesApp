@@ -9,7 +9,7 @@ function NoteTextarea({ noteContent, setNoteContent, characterLimit }) {
     return (
       <div className="mb-4">
         <textarea
-          className="w-full p-4 bg-white rounded-md shadow-md border-r-2 border-orange-500 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
+          className="w-full p-5 rounded-lg bg-white shadow-md border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
           value={noteContent}
           onChange={handleChange}
           placeholder="Write a note..."

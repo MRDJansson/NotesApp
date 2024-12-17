@@ -1,10 +1,8 @@
 // NoteList.jsx
 
-// NoteList.jsx
-
 import { useState } from "react";
-import NoteListDelConf from "./NoteListDelConf";
-import NoteModal from "./NoteModal";
+import NoteDeleteModal from "./modals/NoteDeleteModal";
+import NoteModal from "./modals/NoteModal";
 
 function NoteList({ notes, onDelete }) {
   const [selectedNote, setSelectedNote] = useState(null);
@@ -13,7 +11,7 @@ function NoteList({ notes, onDelete }) {
   const [rememberChoice, setRememberChoice] = useState(false);
 
   const closeModal = () => setSelectedNote(null);
-  const closeNoteListDelConf = () => setShowDeleteConfirmation(false);
+  const closeNoteDeleteModal = () => setShowDeleteConfirmation(false);
 
   if (notes.length === 0) {
     return (
@@ -37,13 +35,6 @@ function NoteList({ notes, onDelete }) {
     setSelectedNote(note);
   };
 
-  const confirmDelete = () => {
-    if (noteToDelete) {
-      onDelete(noteToDelete.id);
-    }
-    setShowDeleteConfirmation(false);
-    setNoteToDelete(null);
-  };
 
   return (
     <div>
@@ -56,7 +47,7 @@ function NoteList({ notes, onDelete }) {
           >
             <div className="flex justify-between items-start">
               <div className="flex items-center">
-                <span className="text-orange-500 font-bold mr-2 text-lg">
+                <span className="text-orange-500 font-bold mr-2 text-lg text-transform: capitalize">
                   {note.course.name}
                 </span>
                 <small className="text-gray-500">({note.course.id})</small>
@@ -95,13 +86,13 @@ function NoteList({ notes, onDelete }) {
       )}
 
       {showDeleteConfirmation && noteToDelete && (
-        <NoteListDelConf
+        <NoteDeleteModal
           note={noteToDelete}
           onDelete={(id) => {
             onDelete(id);
-            closeNoteListDelConf();
+            closeNoteDeleteModal();
           }}
-          onCancel={closeNoteListDelConf}
+          onCancel={closeNoteDeleteModal}
           rememberChoice={rememberChoice}
           setRememberChoice={setRememberChoice}
         />

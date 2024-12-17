@@ -10,7 +10,7 @@ function NoteItem({ filteredNotes }) {
           {filteredNotes.map((note, i) => (
             <li
               key={i}
-              className="p-4 bg-gray-50 rounded-md shadow-md border-r-4 border-orange-500 overflow-hidden max-h-32 relative"
+              className="p-4 bg-gray-50 rounded-md shadow-md overflow-hidden max-h-32 relative"
             >
               <div className="text-gray-700 text-sm leading-relaxed break-words line-clamp-4">
                 {note.text}

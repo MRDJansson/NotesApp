@@ -1,10 +1,10 @@
-// NoteListDelConf.jsx
+// NoteDeleteModal.jsx
 
-function NoteListDelConf({ note, onDelete, onCancel, rememberChoice, setRememberChoice }) {
+function NoteDeleteModal({ note, onDelete, onCancel, rememberChoice, setRememberChoice }) {
     return (
       <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
         <div className="bg-white rounded-lg shadow-lg p-6 max-w-sm w-full relative">
-          <h2 className="text-lg font-bold text-gray-800 mb-4">Confirm Delete</h2>
+          <h2 className="text-lg font-bold text-orange-500 mb-4">Confirm Delete</h2>
           <p className="text-gray-600 mb-4">
             Are you sure you want to delete this note? This action cannot be undone.
           </p>
@@ -13,7 +13,7 @@ function NoteListDelConf({ note, onDelete, onCancel, rememberChoice, setRemember
             <input
               id="rememberChoice"
               type="checkbox"
-              className="mr-2"
+              className="mr-2 w-5 h-5 text-orange-500 bg-white border-gray-300 rounded accent-orange-500"
               checked={rememberChoice}
               onChange={(e) => setRememberChoice(e.target.checked)}
             />
@@ -41,5 +41,5 @@ function NoteListDelConf({ note, onDelete, onCancel, rememberChoice, setRemember
     );
   }
   
-  export default NoteListDelConf;
+  export default NoteDeleteModal;
   

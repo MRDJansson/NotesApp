@@ -1,8 +1,8 @@
 // NavButtons.jsx
 import { BookOpen, List, Plus } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { useStore } from "../store/Store";
-import Tooltip from './Tooltips';
+import { useStore } from "../../store/Store";
+import Tooltip from '../Tooltips';
 
 function NavButtons() {
     const courses = useStore((state) => state.courses);

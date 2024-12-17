@@ -1,5 +1,5 @@
 //CourseView.jsx
-import BackButton from "../components/BackButton";
+import BackButton from "../components/buttons/BackButton";
 import CourseAdd from "../components/CourseAdd";
 import CourseItem from "../components/CourseItem";
 import { useStore } from "../store/Store";
