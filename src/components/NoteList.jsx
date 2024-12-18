@@ -1,6 +1,7 @@
 // NoteList.jsx
 
 import { useState } from "react";
+import Card from "./cards/CardNoteList";
 import NoteDeleteModal from "./modals/NoteDeleteModal";
 import NoteModal from "./modals/NoteModal";
 
@@ -35,47 +36,32 @@ function NoteList({ notes, onDelete }) {
     setSelectedNote(note);
   };
 
-
   return (
     <div>
-      <ul className="space-y-4">
-        {notes.map((note) => (
-          <li
-            key={note.id}
-            className="p-5 rounded-lg bg-white shadow-md border border-gray-200 hover:shadow-xl transition-shadow duration-300 hover:scale-[1.02] transform cursor-pointer group"
-            onClick={() => handleNoteClick(note)}
-          >
-            <div className="flex justify-between items-start">
-              <div className="flex items-center">
-                <span className="text-orange-500 font-bold mr-2 text-lg text-transform: capitalize">
-                  {note.course.name}
-                </span>
-                <small className="text-gray-500">({note.course.id})</small>
-              </div>
-
-              <small className="text-gray-400">
-                {new Date(note.timestamp).toLocaleString("fi-FI")}
-              </small>
-            </div>
-
+      {notes.map((note) => (
+        <Card
+          key={note.id}
+          title={note.course.name}
+          timestamp={new Date(note.timestamp).toLocaleString("fi-FI")}
+          content={
             <p
-              className="mt-3 text-gray-700 text-sm leading-relaxed line-clamp-4 break-words"
+              className="text-gray-700 text-sm leading-relaxed line-clamp-4 break-words"
               style={{ whiteSpace: "pre-line" }}
             >
               {note.text}
             </p>
-
-            <div className="mt-4 text-right opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <button
-                onClick={(e) => handleDeleteClick(note, e)}
-                className="text-red-500 font-medium hover:text-red-600 transition-colors duration-300"
-              >
-                Delete
-              </button>
-            </div>
-          </li>
-        ))}
-      </ul>
+          }
+          actions={
+            <button
+              onClick={(e) => handleDeleteClick(note, e)}
+              className="delete-button"
+            >
+              Delete
+            </button>
+          }
+          onClick={() => handleNoteClick(note)}
+        />
+      ))}
 
       {selectedNote && (
         <NoteModal

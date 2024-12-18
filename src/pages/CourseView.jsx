@@ -1,5 +1,6 @@
 //CourseView.jsx
 import BackButton from "../components/buttons/BackButton";
+import CardTitleDesc from "../components/cards/CardTitleDesc";
 import CourseAdd from "../components/CourseAdd";
 import CourseItem from "../components/CourseItem";
 import { useStore } from "../store/Store";
@@ -14,10 +15,10 @@ function CourseView() {
 
   return (
     <div className="p-6 max-w-3xl mx-auto bg-white shadow-md rounded-md border-r-4 border-b-4 border-orange-500">
-      <h1 className="text-2xl font-semibold text-gray-800 mb-4">Manage Your Courses</h1>
-      <p className="text-gray-600 mb-6">
-        Add new courses to organize your notes effectively. You can manage, view, or delete courses here.
-      </p>
+      <CardTitleDesc
+        title="Manage Your Courses"
+        description="Add new courses to organize your notes effectively. You can manage, view, or delete courses here."
+      />
 
       <CourseAdd />
 
@@ -34,7 +35,7 @@ function CourseView() {
       </ul>
 
       <div className="mt-6 text-right">
-      <BackButton />
+        <BackButton />
       </div>
     </div>
   );

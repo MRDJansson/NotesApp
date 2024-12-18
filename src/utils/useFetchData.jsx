@@ -7,6 +7,6 @@ export const useFetchData = (fetchData, hasFetched, shouldFetch) => {
     if (shouldFetch && !hasFetched) {
       fetchData();
     }
-  }, 
-  [fetchData, hasFetched, shouldFetch]);
+  },
+    [fetchData, hasFetched, shouldFetch]);
 };

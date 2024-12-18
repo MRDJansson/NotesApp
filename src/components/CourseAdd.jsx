@@ -9,7 +9,7 @@ function CourseAdd() {
   const addCourse = useStore((state) => state.addCourse);
 
   const isButtonDisabled = name.length === 0;
-  
+
   const handleClick = () => {
     if (name.length > 0) {
       addCourse(name);

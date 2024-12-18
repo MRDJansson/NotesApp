@@ -6,11 +6,10 @@ function CourseDropdown({ courses, selectedCourse, onCourseChange, isDisabled })
   return (
     <div className="relative">
       <select
-        className={`w-full p-3 border rounded-lg text-gray-700 ${
-          isDisabled
-            ? "bg-gray-100 border-gray-300 cursor-not-allowed"
-            : "bg-white border-orange-gray focus:ring-2 focus:ring-orange-400 hover:border-orange-400"
-        }`}
+        className={`w-full p-3 border rounded-lg text-gray-700 ${isDisabled
+          ? "bg-gray-100 border-gray-300 cursor-not-allowed"
+          : "bg-white border-orange-gray focus:ring-2 focus:ring-orange-400 hover:border-orange-400"
+          }`}
         value={selectedCourse}
         onChange={(e) => onCourseChange(e.target.value)}
         disabled={isDisabled}

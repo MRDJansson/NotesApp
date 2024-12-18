@@ -3,6 +3,7 @@
 import { useState } from "react";
 import BackButton from "../components/buttons/BackButton";
 import SaveButton from "../components/buttons/SaveButton";
+import CardTitleDesc from "../components/cards/CardTitleDesc";
 import CourseDropdown from "../components/CourseDropdown";
 import NoteItem from "../components/NoteItem";
 import NoteTextarea from "../components/NoteTextArea";
@@ -24,7 +25,7 @@ function NoteAdd() {
   const [selectedCourse, setSelectedCourse] = useState("");
   const [noteContent, setNoteContent] = useState("");
   const [isLocked, setIsLocked] = useState(false);
-  const [characterLimit] = useState(500);
+  const [characterLimit] = useState(10000);
 
   const filteredNotes = filterNotes(notes, selectedCourse);
   const isButtonDisabled = !selectedCourse || noteContent.length === 0;
@@ -42,10 +43,10 @@ function NoteAdd() {
 
   return (
     <div className="p-6 bg-white shadow-md border-r-4 border-b-4 border-orange-500 rounded-md max-w-3xl mx-auto">
-      <h1 className="text-2xl font-semibold text-gray-800 mb-4">Create Notes for Courses</h1>
-      <p className="text-gray-600 mb-6">
-        Select a course and write a note. Once you're done, remember to save!
-      </p>
+      <CardTitleDesc
+        title="Create Notes for Courses"
+        description="Select a course and write a note. Once you're done, remember to save!"
+      />
 
       <div className="mb-4">
         <CourseDropdown

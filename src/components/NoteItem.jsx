@@ -15,12 +15,6 @@ function NoteItem({ filteredNotes }) {
               <div className="text-gray-700 text-sm leading-relaxed break-words line-clamp-4">
                 {note.text}
               </div>
-
-              <div className="absolute bottom-0 right-0 w-full text-right bg-gradient-to-t from-gray-50 via-transparent h-6 pointer-events-none line-clamp-visible">
-                {note.text.length > 100 && (
-                  <span className="text-gray-500 pr-2">...</span>
-                )}
-              </div>
             </li>
           ))}
         </ul>

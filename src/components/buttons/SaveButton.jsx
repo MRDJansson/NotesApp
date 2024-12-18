@@ -2,11 +2,11 @@
 
 import React from "react";
 
-function SaveButton({ isDisabled, onClick}) {
+function SaveButton({ isDisabled, onClick }) {
   return (
     <button
-      className={`w-full p-2 rounded-lg mb-4 hover:scale-105
-        ${isDisabled 
+      className={`w-full p-2 rounded-lg mb-4
+        ${isDisabled
           ? "bg-orange-500 text-white hover:bg-gray-300"
           : "bg-orange-500 text-white hover:bg-orange-600"
         } 

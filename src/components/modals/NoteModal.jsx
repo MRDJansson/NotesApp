@@ -30,7 +30,7 @@ function NoteModal({ note, onClose, onDelete }) {
 
         <div className="overflow-y-auto max-h-[40vh] mb-6">
           <p
-            className="text-gray-700 whitespace-pre-wrap text-sm leading-relaxed"
+            className="text-gray-700 whitespace-pre-wrap text-sm leading-relaxed break-words" // added `break-words`
           >
             {note.text}
           </p>
@@ -53,4 +53,3 @@ function NoteModal({ note, onClose, onDelete }) {
 }
 
 export default NoteModal;
-

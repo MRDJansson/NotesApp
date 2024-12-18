@@ -10,8 +10,8 @@ export const useStore = create((set) => ({
     notes: [],
     hasFetchedNotes: false,
     hasFetchedCourses: false,
-    
-    
+
+
 
     fetchCourseData: async () => {
         const url = "https://luentomuistiinpano-api.netlify.app/.netlify/functions/courses"
@@ -19,11 +19,11 @@ export const useStore = create((set) => ({
             const res = await fetch(url)
             const data = await res.json();
 
-            set({ 
-                courses: data, 
+            set({
+                courses: data,
                 hasFetchedCourses: true,
-                courseId: data.length 
-              }); 
+                courseId: data.length
+            });
         } catch (error) {
             console.log("Failed to fetch", error);
         }
@@ -35,11 +35,11 @@ export const useStore = create((set) => ({
             const res = await fetch(url)
             const data = await res.json();
 
-            set({ 
-                notes: data, 
+            set({
+                notes: data,
                 hasFetchedNotes: true,
-                noteId: data.length 
-              }); 
+                noteId: data.length
+            });
 
         } catch (error) {
             console.log("Failed to fetch", error);
@@ -49,7 +49,7 @@ export const useStore = create((set) => ({
     addCourse: (name) => set((state) => ({
         courses: [...state.courses, { id: state.courseId++, name }],
     })),
-    
+
 
     addNote: (courseName, noteContent) => set((state) => ({
         notes: [
