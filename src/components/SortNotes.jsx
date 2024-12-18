@@ -1,22 +1,9 @@
 import { Filter } from "lucide-react";
-import { useState } from "react";
 
-function SortNotes({ notes, onSortedNotesChange }) {
-  const [sortOrder, setSortOrder] = useState("newest");
-
+function SortNotes({ sortOrder, onSortOrderChange }) {
   const toggleSortOrder = () => {
     const newSortOrder = sortOrder === "newest" ? "oldest" : "newest";
-    setSortOrder(newSortOrder);
-  
-    const sortedNotes = [...notes].sort((a, b) => {
-      if (newSortOrder === "newest") {
-        return new Date(b.timestamp) - new Date(a.timestamp);
-      } else {
-        return new Date(a.timestamp) - new Date(b.timestamp);
-      }
-    });
-  
-    onSortedNotesChange(sortedNotes);
+    onSortOrderChange(newSortOrder);
   };
 
   return (

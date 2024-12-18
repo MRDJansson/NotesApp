@@ -1,11 +1,12 @@
 //NotesList.jsx
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import BackButton from "../components/buttons/BackButton";
 import CourseDropdown from "../components/CourseDropdown";
 import NoteList from "../components/NoteList";
 import SortNotes from "../components/SortNotes";
 import { useStore } from "../store/Store";
+import { sortNotesByOrder } from "../utils/sortNotes";
 import { useFetchData } from "../utils/useFetchData";
 
 function NotesView() {
@@ -19,7 +20,7 @@ function NotesView() {
   } = useStore();
 
   const [selectedCourse, setSelectedCourse] = useState("");
-  const [sortedNotes, setSortedNotes] = useState([]);
+  const [sortOrder, setSortOrder] = useState("newest");
 
   useFetchData(fetchNotesData, hasFetchedNotes, hasFetchedCourses && !hasFetchedNotes);
 
@@ -27,9 +28,7 @@ function NotesView() {
     !selectedCourse || note.course.name === selectedCourse
   );
 
-  useEffect(() => {
-    setSortedNotes(filteredNotes);
-  }, [filteredNotes]);
+  const sortedNotes = sortNotesByOrder(filteredNotes, sortOrder);
 
   return (
     <div className="p-6 bg-white shadow-md rounded-md max-w-3xl mx-auto shadow-md border-r-4 border-b-4 border-orange-500">
@@ -47,8 +46,8 @@ function NotesView() {
       </div>
 
       <SortNotes 
-        notes={filteredNotes} 
-        onSortedNotesChange={setSortedNotes}
+        sortOrder={sortOrder} 
+        onSortOrderChange={setSortOrder} 
       />
 
       <NoteList notes={sortedNotes} onDelete={delNote} />
