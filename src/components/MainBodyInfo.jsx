@@ -1,3 +1,5 @@
+// MainBodyInfo.jsx
+
 function MainBodyInfo() {
   return (
     <div className="bg-gray-50 border border-gray-200 p-6 rounded-lg shadow-sm max-w-xl">

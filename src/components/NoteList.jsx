@@ -6,63 +6,67 @@ import NoteDeleteModal from "./modals/NoteDeleteModal";
 import NoteModal from "./modals/NoteModal";
 
 function NoteList({ notes, onDelete }) {
-  const [selectedNote, setSelectedNote] = useState(null);
-  const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
-  const [noteToDelete, setNoteToDelete] = useState(null);
-  const [rememberChoice, setRememberChoice] = useState(false);
+  // --- Local state variables ---
+  const [selectedNote, setSelectedNote] = useState(null);         // Currently selected note for viewing details
+  const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);  // Flag for delete confirmation modal
+  const [noteToDelete, setNoteToDelete] = useState(null);         // Note that is selected for deletion
+  const [rememberChoice, setRememberChoice] = useState(false);    // Flag to remember user's choice for deletion
 
-  const closeModal = () => setSelectedNote(null);
-  const closeNoteDeleteModal = () => setShowDeleteConfirmation(false);
+  // --- Close Modals ---
+  const closeModal = () => setSelectedNote(null);                       // Close the note details modal
+  const closeNoteDeleteModal = () => setShowDeleteConfirmation(false);  // Close the delete confirmation modal
 
+  // --- If no Notes ---
   if (notes.length === 0) {
     return (
       <p className="text-center text-gray-500 italic py-8">
-        No notes found. Start creating!
+        Ei muistiinpanoja! {/* Message for no notes */}
       </p>
     );
   }
 
+  // --- Handle Delete ---
   const handleDeleteClick = (note, e) => {
-    e.stopPropagation();
+    e.stopPropagation();  // Prevent triggering the note's click event
     if (rememberChoice) {
-      onDelete(note.id);
+      onDelete(note.id);  // Delete directly if rememberChoice is true
     } else {
-      setNoteToDelete(note);
-      setShowDeleteConfirmation(true);
+      setNoteToDelete(note);  // Set note to delete if user didn't remember their choice
+      setShowDeleteConfirmation(true);  // Show the delete confirmation modal
     }
   };
 
+  // --- Handle Note Click ---
   const handleNoteClick = (note) => {
-    setSelectedNote(note);
+    setSelectedNote(note);  // Set the selected note to view details
   };
 
   return (
     <div>
+      {/* --- Loop through and display each note --- */}
       {notes.map((note) => (
         <Card
-          key={note.id}
-          title={note.course.name}
-          timestamp={new Date(note.timestamp).toLocaleString("fi-FI")}
+          key={note.id}    // Use the note id as key for the Card component
+          title={note.course.name}  // Course name as the title
+          timestamp={new Date(note.timestamp).toLocaleString("fi-FI")}  // Format the timestamp for the note
           content={
-            <p
-              className="text-gray-700 text-sm leading-relaxed line-clamp-4 break-words"
-              style={{ whiteSpace: "pre-line" }}
-            >
-              {note.text}
+            <p className="text-gray-700 text-sm leading-relaxed line-clamp-4 break-words" style={{ whiteSpace: "pre-line" }}>
+              {note.text} {/* Display note text-content */}
             </p>
           }
           actions={
             <button
-              onClick={(e) => handleDeleteClick(note, e)}
+              onClick={(e) => handleDeleteClick(note, e)}  // Delete button click event
               className="delete-button"
             >
               Delete
             </button>
           }
-          onClick={() => handleNoteClick(note)}
+          onClick={() => handleNoteClick(note)}  // Open the note modal when clicked
         />
       ))}
 
+      {/* --- Modal for displaying note details --- */}
       {selectedNote && (
         <NoteModal
           note={selectedNote}
@@ -71,16 +75,17 @@ function NoteList({ notes, onDelete }) {
         />
       )}
 
+      {/* --- Modal for delete confirmation --- */}
       {showDeleteConfirmation && noteToDelete && (
         <NoteDeleteModal
           note={noteToDelete}
           onDelete={(id) => {
-            onDelete(id);
-            closeNoteDeleteModal();
+            onDelete(id);           // Delete note by id
+            closeNoteDeleteModal();  // Close the delete modal after deleting
           }}
-          onCancel={closeNoteDeleteModal}
-          rememberChoice={rememberChoice}
-          setRememberChoice={setRememberChoice}
+          onCancel={closeNoteDeleteModal}  // Close modal without deleting
+          rememberChoice={rememberChoice}  // Option to remember delete choice
+          setRememberChoice={setRememberChoice}  // Set the remember choice option
         />
       )}
     </div>

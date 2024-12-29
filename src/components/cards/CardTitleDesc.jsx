@@ -1,5 +1,6 @@
 import React from "react";
 
+// --- Card Title and Description Component ---
 const CardTitleDesc = ({ title, description }) => {
   return (
     <div>

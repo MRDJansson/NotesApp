@@ -2,11 +2,14 @@
 
 import { useEffect } from "react";
 
-export const useFetchData = (fetchData, hasFetched, shouldFetch) => {
+// --- Fetch Data Hook ---
+// Fetches data when the conditions are met (ie., data not yet fetched)
+const useFetchData = (fetchData, hasFetched, shouldFetch) => {
   useEffect(() => {
     if (shouldFetch && !hasFetched) {
-      fetchData();
+      fetchData();  // Trigger the fetch function if conditions are met
     }
-  },
-    [fetchData, hasFetched, shouldFetch]);
+  }, [fetchData, hasFetched, shouldFetch]);  // Dependency array ensures the effect runs under specific conditions
 };
+
+export default useFetchData;
