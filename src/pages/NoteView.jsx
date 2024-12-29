@@ -8,7 +8,7 @@ import NoteList from "../components/NoteList";
 import SortNotes from "../components/SortNotes";
 import { useStore } from "../store/Store";
 import { sortNotesByOrder } from "../utils/sortNotes";
-import useFetchData from "../utils/useFetchData";
+import { useFetchData } from "../utils/useFetchData";
 
 function NotesView() {
   // --- State variables ---
@@ -38,7 +38,7 @@ function NotesView() {
 
   return (
     <div className="p-6 bg-white shadow-md rounded-md max-w-3xl mx-auto shadow-md border-r-4 border-b-4 border-orange-500">
-
+      
       {/* --- Card Title and Description --- */}
       <CardTitleDesc
         title="Manage Your Notes"
