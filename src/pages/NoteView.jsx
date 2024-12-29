@@ -1,14 +1,15 @@
 //NotesList.jsx
 
-import { useState } from "react";
-import BackButton from "../components/buttons/BackButton";
-import CardTitleDesc from "../components/cards/CardTitleDesc";
-import CourseDropdown from "../components/CourseDropdown";
-import NoteList from "../components/NoteList";
-import SortNotes from "../components/SortNotes";
-import { useStore } from "../store/Store";
-import { sortNotesByOrder } from "../utils/sortNotes";
-import { useFetchData } from "../utils/useFetchData";
+import { useState } from "react"; // Importing React's useState hook for managing local component state
+import BackButton from "../components/buttons/BackButton"; // Back button component for navigation
+import CardTitleDesc from "../components/cards/CardTitleDesc"; // Card component to display title and description
+import CourseDropdown from "../components/CourseDropdown"; // Dropdown component to select a course
+import NoteList from "../components/NoteList"; // Component to display a list of notes
+import SortNotes from "../components/SortNotes"; // Component to sort the notes (newest/oldest)
+import { useStore } from "../store/Store"; // Custom hook to access global store
+import { sortNotesByOrder } from "../utils/sortNotes"; // Utility function to sort notes by order (newest or oldest)
+import { useFetchData } from "../utils/useFetchData"; // Custom hook to fetch data (notes or courses)
+
 
 function NotesView() {
   // --- State variables ---
