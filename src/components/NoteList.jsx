@@ -57,7 +57,7 @@ function NoteList({ notes, onDelete }) {
           actions={
             <button
               onClick={(e) => handleDeleteClick(note, e)}  // Delete button click event
-              className="delete-button"
+              className="text-gray-300 hover:text-red-500"
             >
               Delete
             </button>
